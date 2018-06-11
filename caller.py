@@ -54,7 +54,7 @@ if __name__ == '__main__':
 
     statuses= get_statuses()
     #print (statuses)
-    update_status('1', '1_4')
+    update_status('1', '1_1')
     print(one_user('1'))
 
 
