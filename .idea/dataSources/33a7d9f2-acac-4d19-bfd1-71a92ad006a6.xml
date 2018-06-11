@@ -5402,137 +5402,159 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="1220" parent="408" name="Users_name_uindex">
+    <column id="1220" parent="408" name="isDisturbing">
+      <Position>14</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="1221" parent="408" name="actualNoiseLevel">
+      <Position>15</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="1222" parent="408" name="Users_name_uindex">
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="1221" parent="408" name="users_completeName_uindex">
+    <index id="1223" parent="408" name="users_completeName_uindex">
       <ColNames>completeName</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="1222" parent="408" name="Users_houses_name_fk">
+    <index id="1224" parent="408" name="Users_houses_name_fk">
       <ColNames>house</ColNames>
     </index>
-    <key id="1223" parent="408" name="PRIMARY">
+    <index id="1225" parent="408" name="users_lu_noise_name_fk">
+      <ColNames>actualNoiseLevel</ColNames>
+    </index>
+    <key id="1226" parent="408" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>name</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="1224" parent="408" name="Users_name_uindex">
+    <key id="1227" parent="408" name="Users_name_uindex">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>Users_name_uindex</UnderlyingIndexName>
     </key>
-    <key id="1225" parent="408" name="users_completeName_uindex">
+    <key id="1228" parent="408" name="users_completeName_uindex">
       <ColNames>completeName</ColNames>
       <UnderlyingIndexName>users_completeName_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="1226" parent="408" name="Users_houses_name_fk">
+    <foreign-key id="1229" parent="408" name="Users_houses_name_fk">
       <ColNames>house</ColNames>
       <RefSchemaName>rnds</RefSchemaName>
       <RefTableName>houses</RefTableName>
       <RefColNames>name</RefColNames>
     </foreign-key>
-    <column id="1227" parent="409" name="name">
+    <foreign-key id="1230" parent="408" name="users_lu_noise_name_fk">
+      <ColNames>actualNoiseLevel</ColNames>
+      <RefSchemaName>rnds</RefSchemaName>
+      <RefTableName>lu_noise</RefTableName>
+      <RefColNames>name</RefColNames>
+    </foreign-key>
+    <column id="1231" parent="409" name="name">
       <Position>1</Position>
       <DataType>varchar(10)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="1228" parent="409" name="isWindowsOpen">
+    <column id="1232" parent="409" name="isWindowsOpen">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="1229" parent="409" name="isDoorOpen">
+    <column id="1233" parent="409" name="isDoorOpen">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="1230" parent="409" name="isLightsOn">
+    <column id="1234" parent="409" name="isLightsOn">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="1231" parent="409" name="noiseLevel">
+    <column id="1235" parent="409" name="noiseLevel">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;2&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="1232" parent="409" name="usersettings_userstatuses_name_fk">
+    <index id="1236" parent="409" name="usersettings_userstatuses_name_fk">
       <ColNames>name</ColNames>
     </index>
-    <index id="1233" parent="409" name="usersettings_lu_noise_name_fk">
+    <index id="1237" parent="409" name="usersettings_lu_noise_name_fk">
       <ColNames>noiseLevel</ColNames>
     </index>
-    <foreign-key id="1234" parent="409" name="usersettings_userstatuses_name_fk">
+    <foreign-key id="1238" parent="409" name="usersettings_userstatuses_name_fk">
       <ColNames>name</ColNames>
       <RefSchemaName>rnds</RefSchemaName>
       <RefTableName>userstatuses</RefTableName>
       <RefColNames>name</RefColNames>
     </foreign-key>
-    <foreign-key id="1235" parent="409" name="usersettings_lu_noise_name_fk">
+    <foreign-key id="1239" parent="409" name="usersettings_lu_noise_name_fk">
       <ColNames>noiseLevel</ColNames>
       <RefSchemaName>rnds</RefSchemaName>
       <RefTableName>lu_noise</RefTableName>
       <RefColNames>name</RefColNames>
     </foreign-key>
-    <column id="1236" parent="410" name="name">
+    <column id="1240" parent="410" name="name">
       <Position>1</Position>
       <DataType>varchar(5)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="1237" parent="410" name="user">
+    <column id="1241" parent="410" name="user">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="1238" parent="410" name="DefaultStatus">
+    <column id="1242" parent="410" name="DefaultStatus">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="1239" parent="410" name="customisedDescription">
+    <column id="1243" parent="410" name="customisedDescription">
       <Position>4</Position>
       <DataType>varchar(100)|0</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="1240" parent="410" name="userStatuses_name_uindex">
+    <index id="1244" parent="410" name="userStatuses_name_uindex">
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="1241" parent="410" name="userstatuses_users_name_fk">
+    <index id="1245" parent="410" name="userstatuses_users_name_fk">
       <ColNames>user</ColNames>
     </index>
-    <index id="1242" parent="410" name="userstatuses_defaultstatuses_name_fk">
+    <index id="1246" parent="410" name="userstatuses_defaultstatuses_name_fk">
       <ColNames>DefaultStatus</ColNames>
     </index>
-    <key id="1243" parent="410" name="PRIMARY">
+    <key id="1247" parent="410" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>name</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="1244" parent="410" name="userStatuses_name_uindex">
+    <key id="1248" parent="410" name="userStatuses_name_uindex">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>userStatuses_name_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="1245" parent="410" name="userstatuses_users_name_fk">
+    <foreign-key id="1249" parent="410" name="userstatuses_users_name_fk">
       <ColNames>user</ColNames>
       <RefSchemaName>rnds</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>name</RefColNames>
     </foreign-key>
-    <foreign-key id="1246" parent="410" name="userstatuses_defaultstatuses_name_fk">
+    <foreign-key id="1250" parent="410" name="userstatuses_defaultstatuses_name_fk">
       <ColNames>DefaultStatus</ColNames>
       <RefSchemaName>rnds</RefSchemaName>
       <RefTableName>defaultstatuses</RefTableName>

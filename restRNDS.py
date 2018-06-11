@@ -24,7 +24,10 @@ def api_users():
 @app.route('/users/<name>')
 def api_user(name):
     users = db.all_users()
-    user = [u for u in users if u['name'] == name]
+    user = []
+    for u in users:
+        if u['userID'] == name:
+            user.append(u)
     if len(user) == 1:
         return jsonify(user)
     else:
@@ -44,5 +47,30 @@ def api_create_user():
         return response
 
 
+@app.route('/usersettings/<userstatus>')
+def api_usersettings(userstatus):
+    settings = db.get_user_setting(userstatus)
+    print ("aaaa/n/n ", settings)
+    """if len(settings) == 1:
+        return jsonify(settings)
+    else:
+        response = jsonify({ 'message': "Invalid user "+name })
+        response.status_code = 404
+        return response"""
+    return jsonify(settings)
+
+@app.route('/statuses')
+def api_statuses():
+    Stat=db.statuses()
+    return jsonify(Stat)
+
+@app.route('/statuses/<userID>/<newUserStatus>', methods=['PUT'])
+def api_updateUserSettings(userID, newUserStatus):
+    db.put_user_status(userID, newUserStatus)
+    return Response(status=200)
+
+
 if __name__ == '__main__':
-    app.run()
+    #use the pc as a server - connection from computer ip
+    app.run(host= '0.0.0.0', port = 8080, debug = True)
+    #app.run()
