@@ -49,7 +49,7 @@ def api_create_user():
 
 @app.route('/usersettings/<userstatus>')
 def api_usersettings(userstatus):
-    settings = db.get_user_setting(userstatus)
+    settings = db.get_user_setting2(userstatus)
     print ("aaaa/n/n ", settings)
     """if len(settings) == 1:
         return jsonify(settings)

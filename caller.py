@@ -6,7 +6,7 @@ Uses the "requests" module for HTTP calls
 """
 
 #base_url = 'http://localhost:5000'
-base_url = 'http://192.168.43.224:8080'
+base_url = 'http://10.20.0.158:8080'
 
 def list_users():
     url = base_url+'/users'
@@ -31,7 +31,9 @@ def add_user(name, firstname, lastname):
 
 def read_userstatusdetails (userstatus):
     url = base_url + '/usersettings/' + userstatus
+    print (url)
     r = requests.get(url)
+    return r.json()
 
 def get_statuses():
     url = base_url+'/statuses'
@@ -49,12 +51,12 @@ if __name__ == '__main__':
     #print(all_users)
     #print(one_user('1'))
 
-    #settings = read_userstatusdetails ('1_1')
-    #print (settings)
+    settings = read_userstatusdetails ('1_1')
+    print (settings)
 
     statuses= get_statuses()
     #print (statuses)
-    update_status('1', '1_1')
-    print(one_user('1'))
+    #update_status('1', '1_1')
+    #print(one_user('1'))
 
 

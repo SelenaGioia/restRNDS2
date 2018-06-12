@@ -85,6 +85,48 @@ def put_user_status(username, status):
     conn.close()
     return result
 
+
+def get_user_setting2(status):
+    sql = "" \
+          "SELECT usersettings.name, isWindowsOpen, isDoorOpen, isLightsOn, noiseLevel, customisedDescription " \
+          "FROM rnds.usersettings LEFT JOIN rnds.userstatuses ON usersettings.name = userstatuses.name " \
+          "WHERE usersettings.name = %s"
+    conn = pymysql.connect(user="root", password="root", host="localhost", database="rnds")
+
+    cursor = conn.cursor()
+    cursor.execute(sql, (status))
+
+    result = cursor.fetchall()
+
+
+    for t in result:
+          status = {}
+          status["StateID"] = t[0]
+          status["isWindowsOpen"] = t[1]
+          status["isDoorOpen"] = t[2]
+          status["isLightsOn"] = t[3]
+          status["noiseLevel"] = t[4]
+          status["customisedDescription"] = t[5]
+
+    conn.close()
+    return status
+
+
+
+def put_user_setting2(isWindowsOpen, isDoorOpen, isLightsOn, noiseLevel, description, name):
+    sql1 = "UPDATE rnds.usersettings set isWindowsOpen=%s , isDoorOpen=%s, isLightsOn=%s, noiseLevel=%s WHERE name = %s"
+    sql2 = "UPDATE rnds.userstatuses set customisedDescription = % s WHERE name = %s"
+
+    conn = pymysql.connect(user="root", password="root", host="localhost", database="rnds")
+
+    cursor = conn.cursor()
+    cursor.execute(sql1, (isWindowsOpen, isDoorOpen, isLightsOn, noiseLevel, name))
+    cursor.execute(sql2, (description, name))
+    conn.commit()
+    result = cursor.fetchall()
+    conn.close()
+    return result
+
 if __name__ == '__main__':
     #users= all_users()
     #print (users)
@@ -95,8 +137,11 @@ if __name__ == '__main__':
     #print(user_settings1)
     #Availablestatuses= statuses()
     #print (Availablestatuses)
-    users = all_users()
-    print (users)
-    put_user_status('1','1_3')
-    users = all_users()
-    print (users)
+    #users = all_users()
+    #print (users)
+    #put_user_status('1','1_4')
+    #users = all_users()
+    #print (users)
+    put_user_setting2(1, 0, 0, 3,'shopping at supermarket', '1_1')
+    user_settings2 = get_user_setting2('1_1')
+    print(user_settings2)
